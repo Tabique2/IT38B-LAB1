@@ -160,3 +160,19 @@
         font-size: 16px;
     }
 }
+
+/* Existing styles... */
+
+.tab-content {
+    display: none;
+}
+
+/* Active state for the navigation links */
+.nav-link.active {
+    background-color: #444;
+}
+
+/* Show active tab */
+.tab-content.active {
+    display: block;
+}

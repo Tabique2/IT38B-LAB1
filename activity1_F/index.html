@@ -14,13 +14,13 @@
                 <h2>Dashboard</h2>
             </div>
             <ul class="nav-list">
-                <li><a href="#reports">Reports</a></li>
+                <li><a href="#" class="nav-link" data-target="reports">Reports</a></li>
                 <li>
-                    <a href="#accounts">Accounts</a>
+                    <a href="#" class="nav-link" data-target="accounts">Accounts</a>
                     <ul class="sub-nav">
-                        <li><a href="#users">Users</a></li>
-                        <li><a href="#temp-users">Temp Users</a></li>
-                        <li><a href="#total-users">Total No. of Users</a></li>
+                        <li><a href="#" class="nav-link" data-target="users">Users</a></li>
+                        <li><a href="#" class="nav-link" data-target="temp-users">Temp Users</a></li>
+                        <li><a href="#" class="nav-link" data-target="total-users">Total No. of Users</a></li>
                     </ul>
                 </li>
             </ul>
@@ -29,31 +29,63 @@
         
         <div class="main-content">
             <h1>Welcome to the Dashboard</h1>
-            <div id="reports">
+            <div id="reports" class="tab-content">
                 <h2>Reports Section</h2>
-                <p>DIRI MAKITA ANG MGA REPORTS</p>
+                <p>VIEW REPORTS</p>
             </div>
 
-            <div id="accounts">
+            <div id="accounts" class="tab-content">
                 <h2>Accounts Section</h2>
                 <p>Choose an account type to view.</p>
+            </div>
 
-                <div id="users">
-                    <h3>Users</h3>
-                    <p>Details about users.</p>
-                </div>
+            <div id="users" class="tab-content">
+                <h3>Users</h3>
+                <p>Details about users.</p>
+            </div>
 
-                <div id="temp-users">
-                    <h3>Temp Users</h3>
-                    <p>Details about temporary users.</p>
-                </div>
+            <div id="temp-users" class="tab-content">
+                <h3>Temp Users</h3>
+                <p>Details about temporary users.</p>
+            </div>
 
-                <div id="total-users">
-                    <h3>Total No. of Users</h3>
-                    <p>View the total count of users.</p>
-                </div>
+            <div id="total-users" class="tab-content">
+                <h3>Total No. of Users</h3>
+                <p>View the total count of users.</p>
             </div>
         </div>
     </div>
+
+    <script>
+        const navLinks = document.querySelectorAll('.nav-link');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        
+        function hideTabs() {
+            tabContents.forEach(content => {
+                content.style.display = 'none';
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+        }
+
+        
+        function showTab(event) {
+            hideTabs();
+            const targetTab = document.getElementById(event.target.dataset.target);
+            targetTab.style.display = 'block';
+            event.target.classList.add('active');
+        }
+
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', showTab);
+        });
+
+        
+        document.getElementById('reports').style.display = 'block';
+        document.querySelector('.nav-link[data-target="reports"]').classList.add('active');
+    </script>
 </body>
 </html>
